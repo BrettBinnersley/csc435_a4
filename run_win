@@ -3,8 +3,8 @@ cd bin
 if [ "$#" -gt 0 ]
 then
   java GooMain "../test_files/$1.go"
-  ./win_llvm_progs/lli "../test_files/$1.ll"
+  ./win_llvm_progs/lli -force-interpreter "../test_files/$1.ll"
 else
   java GooMain "../test_files/test_prog.go"
-  ./win_llvm_progs/lli "../test_files/test_prog.ll"
+  ./win_llvm_progs/lli -force-interpreter "../test_files/test_prog.ll"
 fi

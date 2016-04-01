@@ -4,8 +4,8 @@ cd bin
 if [ "$#" -gt 0 ]
 then
   java GooMain "../test_files/$1.go"
-  lli "../test_files/$1.ll"
+  lli-3.7  -force-interpreter "../test_files/$1.ll"
 else
-  java GooMain "../test_files/test_prog.go"
-  lli "../test_files/test_prog.ll"
+  java GooMain -triple TTTT "../test_files/test_prog.go"
+  lli-3.7  -force-interpreter "../test_files/test1.ll"
 fi
