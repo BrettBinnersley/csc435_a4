@@ -2,11 +2,11 @@
 
 import org.antlr.v4.runtime.*;
 
-public class Symbol { // A generic programming language symbol
+public class Symbol {  // A generic programming language symbol
 
     enum Kind { Unknown, Variable, Function, Formal, Field,
     			Constant, TypeName, Package, Label }   // CHANGED
-    
+
     static public boolean tracing = false;
 
     String name;
@@ -50,10 +50,10 @@ public class Symbol { // A generic programming language symbol
 
     public Kind getKind() { return kind; }
     public void setkind(Kind k) { kind = k; }
-    
+
     public Scope getScope() { return scope; }
     public void setScope(Scope s) { scope = s; }
-    
+
     public int getLineNumber() { return line; }
     public void setLineNumber(int ln) { line = ln; }
 

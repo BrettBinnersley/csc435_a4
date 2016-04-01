@@ -27,7 +27,7 @@ public class CGenVisitor extends GooBaseVisitor<LLVMValue> {
 	String packageName = null;
 
     LLVM ll;
-	
+
 	// ************** constructors ******************
 
 	// default constructor
@@ -82,14 +82,14 @@ public class CGenVisitor extends GooBaseVisitor<LLVMValue> {
 	}
 
 	// *************** Visit methods *******************
-	
-	/* Note: 
+
+	/* Note:
 		Tthese visit methods are in exactly the same order as
 	   	the corresponding grammar rules in Goo.g4.
 	   	If a visitor method is not needed for a group of rules with
 	    the same LHS, a comment listing the rule(s) appears instead.
 	   	This helps ensure that no rule has been missed.
-	*/ 
+	*/
 
 	@Override
 	public LLVMValue visitType(GooParser.TypeContext ctx) {
@@ -126,7 +126,7 @@ public class CGenVisitor extends GooBaseVisitor<LLVMValue> {
 	}
 
 	// fieldDeclList:  /* empty */ |  (fieldDecl ';')* fieldDecl optSemi ;
-	
+
     @Override
 	public LLVMValue visitFieldDecl(GooParser.FieldDeclContext ctx) {
 		return visitChildren(ctx);
@@ -138,7 +138,7 @@ public class CGenVisitor extends GooBaseVisitor<LLVMValue> {
 	}
 
 	// baseType:   type ;
-	
+
     @Override
 	public LLVMValue visitSignature(GooParser.SignatureContext ctx) {
 		return visitChildren(ctx);
@@ -179,7 +179,7 @@ public class CGenVisitor extends GooBaseVisitor<LLVMValue> {
 	public LLVMValue visitTopLevelDeclList(GooParser.TopLevelDeclListContext ctx) {
 		visitChildren(ctx);
 		return null;
-	}	
+	}
 
 	// topLevelDecl:   declaration | functionDecl ;
 
@@ -295,7 +295,7 @@ public class CGenVisitor extends GooBaseVisitor<LLVMValue> {
 	    if (retType == "void")
 	    	ll.println("  ret void");
 	    else {
-	    	ll.printf("  ret %s %s\n", retType, "0"); 
+	    	ll.printf("  ret %s %s\n", retType, "0");
 	    }
 		currentScope = currentScope.getEnclosingScope();  // exit scope
 		ll.println("}");
@@ -342,7 +342,7 @@ public class CGenVisitor extends GooBaseVisitor<LLVMValue> {
 
     @Override
     public LLVMValue visitOperandName(GooParser.OperandNameContext ctx) {
-    	if (ctx.qualifiedIdent() != null) 
+    	if (ctx.qualifiedIdent() != null)
         	return visit(ctx.qualifiedIdent());
         String id = ctx.Identifier().getText();
         Symbol sy = currentScope.resolve(id);
@@ -404,7 +404,7 @@ public class CGenVisitor extends GooBaseVisitor<LLVMValue> {
 				if (exp.getValue().charAt(0)=='c')
 					exp = ll.forceStringReference(exp);
 				argVals.set(k++, exp);
-				
+
 			}
 			String funcName = ctx.primaryExpr().getText();
 			Symbol funcSym = currentScope.resolve(funcName);
@@ -510,7 +510,7 @@ public class CGenVisitor extends GooBaseVisitor<LLVMValue> {
 			return ll.writeCompInst(relop, lhs, rhs);
 		}
 	}
-	
+
 	@Override
 	public LLVMValue visitBoolExp(GooParser.BoolExpContext ctx) {
 		return visitChildren(ctx);
@@ -518,6 +518,7 @@ public class CGenVisitor extends GooBaseVisitor<LLVMValue> {
 
 	@Override
 	public LLVMValue visitUnaryExpr(GooParser.UnaryExprContext ctx) {
+    // TODO: ‘+’ and ‘-’ unary operators [10 points] (Added by Brett). Not sure if this is the correct spot or not.
 		return visitChildren(ctx);
 	}
 
@@ -525,6 +526,15 @@ public class CGenVisitor extends GooBaseVisitor<LLVMValue> {
 	// addOp:     '+' | '-' | '|' | '^' ;
 	// mulOp:     '*' | '/' | '%' | '<<' | '>>' | '&' | '&^' ;
 	// unaryOp:   '+' | '-' | '!' | '^' | '*' | '&' ;
+
+
+  //
+  // TODO: Add unary op's: +, -, !, &, *. There are 5 total. Brett added this.
+  // Note: I'm not sure if the * and & will work out of the box (provided code).
+  // Nigel stated that we may need to use our A#3 code here (which I know did work for)
+  // pointer reference and dereference operators.
+  // GLHF ~ Brett.
+  //
 
     // Careful, conversions can have the same syntax as function calls
 	@Override
@@ -617,6 +627,20 @@ public class CGenVisitor extends GooBaseVisitor<LLVMValue> {
 		return null;
 	}
 
+  // TODO: For statements. Brett added this. not sure if it should go here.
+  // Note: For & while loops are the exact same thing. The updated requirements require:
+  // two different forms of the form loop.
+  // 1. "for" Condition Block.
+  // 5. "for" ForClause Block.
+  // GLHF.
+  // ~Brett
+  //
+  // @Override
+	// public LLVMValue visitForStmt(GooParser.ForStmtContext ctx) {
+	// 	return null; ....
+	// }
+
+
 	@Override
 	public LLVMValue visitElsePart(GooParser.ElsePartContext ctx) {
 		return visitChildren(ctx);
@@ -659,7 +683,7 @@ public class CGenVisitor extends GooBaseVisitor<LLVMValue> {
 	}
 
 	// packageClause:   PACKAGE packageName ;
-	
+
 	// packageName:   Identifier ;
 
 	// importDeclList:   (importDecl ';')*  ;
@@ -676,7 +700,7 @@ public class CGenVisitor extends GooBaseVisitor<LLVMValue> {
 // ********************** utility methods ********************************
 
 	// scans up enclosing scopes to find current function
-	// CRASHES IF CALLED WHEN CURRENT SCOPE IS PACKAGE LEVEL !! 
+	// CRASHES IF CALLED WHEN CURRENT SCOPE IS PACKAGE LEVEL !!
 	private FunctionSymbol currentFunction() {
 		Scope scope = currentScope;
 		while( !(scope instanceof FunctionSymbol) )
@@ -684,7 +708,7 @@ public class CGenVisitor extends GooBaseVisitor<LLVMValue> {
 		return (FunctionSymbol)scope;
 	}
 
-    private void mutipleDeclarations(ParserRuleContext ctx, List<Token> ids, 
+    private void mutipleDeclarations(ParserRuleContext ctx, List<Token> ids,
     				LLVMValue.LLVMValueList vals, boolean isConst) {
     	boolean valueProvided = true;
     	if (vals.size() == 0)
@@ -724,7 +748,7 @@ public class CGenVisitor extends GooBaseVisitor<LLVMValue> {
 	        }
 	    }
     }
-    
+
     private String selectLLVMFltOperator( ParserRuleContext ctx, String text ) {
 		switch(text) {
 			case "+":	return "fadd";
