@@ -1,8 +1,8 @@
 // GooMain.java
 //
 // TEAM MEMBERS:
-//     * PUT FIRST TEAM MEMBER NAME HERE
-//     * PUT SECOND TEAM MEMBER NAME HERE
+//     Brett Binnersley, V00776751
+//     Sebastien Guillemot, V00741620
 //
 // Main program which invokes the various compiler phases:
 // lexer/parser, symbol table construction, type checking ...
@@ -84,7 +84,7 @@ public class GooMain {
         GooParser parser = new GooParser(tokens);
 
         ParseTree tree = parser.sourceFile();	// sourceFile is start symbol
-        
+
         if (printTree) {
         	System.out.println(tree.toStringTree(parser));
         	System.out.println();
@@ -106,7 +106,7 @@ public class GooMain {
 				+ ReportError.getErrorCount() + " errors");
 			System.exit(1);
 		}
-			
+
 		// The next phase will be type checking and most semantic checking
 		// of function bodies
 

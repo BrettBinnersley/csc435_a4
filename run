@@ -1,0 +1,8 @@
+javac *.java -d bin/
+cd bin
+if [ "$#" -gt 0 ]
+then
+  java GooMain "../test_files/$1"
+else
+  java GooMain "../test_files/test_prog.go"
+fi
