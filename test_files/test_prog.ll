@@ -25,7 +25,7 @@ entry:
   %5 = mul i32 %4, 2
   store i32 %5, i32* @glob.1, align 4
   %6 = load i32, i32* %0
-  %7 = icmp sgt i32 %6, 0
+  %7 = icmp slt i32 %6, 0
   br i1 %7, label %then.0, label %else.1
 then.0:
   %8 = alloca double, align 8 ; pi

@@ -1,11 +1,11 @@
 source ~/.bash_profile
-javac *.java -d bin/
-cd bin
+javac -g -d bin *.java
+
 if [ "$#" -gt 0 ]
 then
-  java GooMain "../test_files/$1.go"
+  java -cp bin GooMain "../test_files/$1.go"
   lli-3.7  -force-interpreter "../test_files/$1.ll"
 else
-  java GooMain -triple TTTT "../test_files/test_prog.go"
-  lli-3.7  -force-interpreter "../test_files/test1.ll"
+  java -cp bin GooMain "test_files/test_prog.go"
+  lli-3.7  -force-interpreter "test_files/test_prog.ll"
 fi
