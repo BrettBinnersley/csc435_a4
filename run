@@ -1,8 +1,11 @@
+source ~/.bash_profile
 javac *.java -d bin/
 cd bin
 if [ "$#" -gt 0 ]
 then
-  java GooMain "../test_files/$1"
+  java GooMain "../test_files/$1.go"
+  lli "../test_files/$1.ll"
 else
   java GooMain "../test_files/test_prog.go"
+  lli "../test_files/test_prog.ll"
 fi
