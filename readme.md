@@ -3,4 +3,5 @@ Csc 435 (Compilers) Uvic Assignment 4 (University of Victoria).
   Sebastien Guillemot, V00741620
 
 To use:
- < Todo >
+ OSX / Linux: ./run
+ Windows: ./run_win
