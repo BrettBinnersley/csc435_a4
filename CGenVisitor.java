@@ -654,18 +654,30 @@ public class CGenVisitor extends GooBaseVisitor<LLVMValue> {
 		return null;
 	}
 
-  // TODO: For statements. Brett added this. not sure if it should go here.
+  // TODO: For statements.
   // Note: For & while loops are the exact same thing. The updated requirements require:
   // two different forms of the form loop.
   // 1. "for" Condition Block.
   // 5. "for" ForClause Block.
-  // GLHF.
-  // ~Brett
   //
-  // @Override
-	// public LLVMValue visitForStmt(GooParser.ForStmtContext ctx) {
-	// 	return null; ....
-	// }
+  @Override
+	public LLVMValue visitForStmt(GooParser.ForStmtContext ctx) {
+    if(ctx.condition() != null){
+      String condLab = ll.createBBLabel("cond");
+      String thenLab = ll.createBBLabel("then");
+      String endLab  = ll.createBBLabel("endwhile");
+      ll.writeLabel(condLab);
+      LLVMValue cond = visit(ctx.condition());
+      ll.writeCondBranch(cond, thenLab, endLab);
+      ll.writeLabel(thenLab);
+      visit(ctx.block());
+      ll.writeBranch(condLab);
+      ll.writeLabel(endLab);
+    }else if(ctx.forClause() != null){
+      // TODO
+    }
+		return null;
+	}
 
 
 	@Override

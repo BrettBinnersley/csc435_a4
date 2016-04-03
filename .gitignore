@@ -2,3 +2,10 @@ bin/*
 *.class
 *.DS_STORE
 *.ll
+*.class
+Goo*
+!Goo.g4
+.project
+.classpath
+sebrun.bat
+antlr*

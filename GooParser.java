@@ -1,4 +1,4 @@
-// Generated from Goo.g4 by ANTLR 4.5.2
+// Generated from Goo.g4 by ANTLR 4.5.1
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class GooParser extends Parser {
-	static { RuntimeMetaData.checkVersion("4.5.2", RuntimeMetaData.VERSION); }
+	static { RuntimeMetaData.checkVersion("4.5.1", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
 	protected static final PredictionContextCache _sharedContextCache =
@@ -157,9 +157,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_type; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitType(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterType(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitType(this);
 		}
 	}
 
@@ -218,9 +221,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_typeName; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitTypeName(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterTypeName(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitTypeName(this);
 		}
 	}
 
@@ -263,9 +269,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_typeLit; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitTypeLit(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterTypeLit(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitTypeLit(this);
 		}
 	}
 
@@ -274,7 +283,6 @@ public class GooParser extends Parser {
 		enterRule(_localctx, 4, RULE_typeLit);
 		try {
 			setState(200);
-			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,1,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
@@ -329,9 +337,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_arrayType; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitArrayType(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterArrayType(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitArrayType(this);
 		}
 	}
 
@@ -371,9 +382,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_arrayLength; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitArrayLength(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterArrayLength(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitArrayLength(this);
 		}
 	}
 
@@ -407,9 +421,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_elementType; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitElementType(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterElementType(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitElementType(this);
 		}
 	}
 
@@ -443,9 +460,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_sliceType; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitSliceType(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterSliceType(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitSliceType(this);
 		}
 	}
 
@@ -484,9 +504,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_structType; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitStructType(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterStructType(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitStructType(this);
 		}
 	}
 
@@ -532,9 +555,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_fieldDeclList; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitFieldDeclList(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterFieldDeclList(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitFieldDeclList(this);
 		}
 	}
 
@@ -604,9 +630,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_fieldDecl; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitFieldDecl(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterFieldDecl(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitFieldDecl(this);
 		}
 	}
 
@@ -642,9 +671,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_pointerType; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitPointerType(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterPointerType(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitPointerType(this);
 		}
 	}
 
@@ -680,9 +712,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_baseType; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitBaseType(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterBaseType(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitBaseType(this);
 		}
 	}
 
@@ -719,9 +754,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_signature; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitSignature(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterSignature(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitSignature(this);
 		}
 	}
 
@@ -734,7 +772,6 @@ public class GooParser extends Parser {
 			setState(242);
 			parameters();
 			setState(244);
-			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,4,_ctx) ) {
 			case 1:
 				{
@@ -765,9 +802,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_result; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitResult(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterResult(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitResult(this);
 		}
 	}
 
@@ -801,9 +841,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_parameters; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitParameters(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterParameters(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitParameters(this);
 		}
 	}
 
@@ -861,9 +904,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_parameterList; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitParameterList(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterParameterList(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitParameterList(this);
 		}
 	}
 
@@ -919,9 +965,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_parameterDecl; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitParameterDecl(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterParameterDecl(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitParameterDecl(this);
 		}
 	}
 
@@ -932,7 +981,6 @@ public class GooParser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(266);
-			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,8,_ctx) ) {
 			case 1:
 				{
@@ -963,9 +1011,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_methodName; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitMethodName(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterMethodName(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitMethodName(this);
 		}
 	}
 
@@ -999,9 +1050,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_block; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitBlock(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterBlock(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitBlock(this);
 		}
 	}
 
@@ -1045,9 +1099,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_statementList; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitStatementList(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterStatementList(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitStatementList(this);
 		}
 	}
 
@@ -1057,7 +1114,6 @@ public class GooParser extends Parser {
 		try {
 			int _alt;
 			setState(288);
-			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,10,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
@@ -1119,9 +1175,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_declaration; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitDeclaration(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterDeclaration(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitDeclaration(this);
 		}
 	}
 
@@ -1182,9 +1241,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_topLevelDeclList; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitTopLevelDeclList(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterTopLevelDeclList(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitTopLevelDeclList(this);
 		}
 	}
 
@@ -1257,9 +1319,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_topLevelDecl; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitTopLevelDecl(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterTopLevelDecl(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitTopLevelDecl(this);
 		}
 	}
 
@@ -1313,9 +1378,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_constDecl; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitConstDecl(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterConstDecl(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitConstDecl(this);
 		}
 	}
 
@@ -1324,7 +1392,6 @@ public class GooParser extends Parser {
 		enterRule(_localctx, 46, RULE_constDecl);
 		try {
 			setState(320);
-			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,15,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
@@ -1376,9 +1443,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_constSpecList; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitConstSpecList(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterConstSpecList(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitConstSpecList(this);
 		}
 	}
 
@@ -1448,9 +1518,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_constSpec; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitConstSpec(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterConstSpec(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitConstSpec(this);
 		}
 	}
 
@@ -1463,7 +1536,6 @@ public class GooParser extends Parser {
 			setState(336);
 			identifierList();
 			setState(338);
-			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,18,_ctx) ) {
 			case 1:
 				{
@@ -1497,9 +1569,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_constSpecRem; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitConstSpecRem(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterConstSpecRem(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitConstSpecRem(this);
 		}
 	}
 
@@ -1548,9 +1623,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_identifierList; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitIdentifierList(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterIdentifierList(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitIdentifierList(this);
 		}
 	}
 
@@ -1610,9 +1688,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_expressionList; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitExpressionList(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterExpressionList(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitExpressionList(this);
 		}
 	}
 
@@ -1671,9 +1752,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_typeDecl; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitTypeDecl(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterTypeDecl(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitTypeDecl(this);
 		}
 	}
 
@@ -1682,7 +1766,6 @@ public class GooParser extends Parser {
 		enterRule(_localctx, 58, RULE_typeDecl);
 		try {
 			setState(369);
-			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,22,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
@@ -1734,9 +1817,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_typeSpecList; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitTypeSpecList(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterTypeSpecList(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitTypeSpecList(this);
 		}
 	}
 
@@ -1804,9 +1890,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_typeSpec; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitTypeSpec(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterTypeSpec(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitTypeSpec(this);
 		}
 	}
 
@@ -1846,9 +1935,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_varDecl; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitVarDecl(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterVarDecl(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitVarDecl(this);
 		}
 	}
 
@@ -1857,7 +1949,6 @@ public class GooParser extends Parser {
 		enterRule(_localctx, 64, RULE_varDecl);
 		try {
 			setState(395);
-			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,25,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
@@ -1909,9 +2000,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_varSpecList; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitVarSpecList(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterVarSpecList(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitVarSpecList(this);
 		}
 	}
 
@@ -1981,9 +2075,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_varSpec; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitVarSpec(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterVarSpec(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitVarSpec(this);
 		}
 	}
 
@@ -2022,9 +2119,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_varSpecRem; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitVarSpecRem(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterVarSpecRem(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitVarSpecRem(this);
 		}
 	}
 
@@ -2033,7 +2133,6 @@ public class GooParser extends Parser {
 		enterRule(_localctx, 70, RULE_varSpecRem);
 		try {
 			setState(421);
-			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,28,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
@@ -2087,9 +2186,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_shortVarDecl; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitShortVarDecl(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterShortVarDecl(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitShortVarDecl(this);
 		}
 	}
 
@@ -2134,9 +2236,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_functionDecl; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitFunctionDecl(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterFunctionDecl(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitFunctionDecl(this);
 		}
 	}
 
@@ -2145,7 +2250,6 @@ public class GooParser extends Parser {
 		enterRule(_localctx, 74, RULE_functionDecl);
 		try {
 			setState(435);
-			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,29,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
@@ -2189,9 +2293,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_functionName; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitFunctionName(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterFunctionName(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitFunctionName(this);
 		}
 	}
 
@@ -2228,9 +2335,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_function; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitFunction(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterFunction(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitFunction(this);
 		}
 	}
 
@@ -2266,9 +2376,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_functionBody; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitFunctionBody(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterFunctionBody(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitFunctionBody(this);
 		}
 	}
 
@@ -2308,9 +2421,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_operand; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitOperand(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterOperand(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitOperand(this);
 		}
 	}
 
@@ -2319,7 +2435,6 @@ public class GooParser extends Parser {
 		enterRule(_localctx, 82, RULE_operand);
 		try {
 			setState(450);
-			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,30,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
@@ -2371,9 +2486,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_literal; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitLiteral(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterLiteral(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitLiteral(this);
 		}
 	}
 
@@ -2427,9 +2545,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_basicLit; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitBasicLit(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterBasicLit(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitBasicLit(this);
 		}
 	}
 
@@ -2470,9 +2591,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_operandName; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitOperandName(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterOperandName(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitOperandName(this);
 		}
 	}
 
@@ -2481,7 +2605,6 @@ public class GooParser extends Parser {
 		enterRule(_localctx, 88, RULE_operandName);
 		try {
 			setState(460);
-			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,32,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
@@ -2520,9 +2643,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_qualifiedIdent; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitQualifiedIdent(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterQualifiedIdent(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitQualifiedIdent(this);
 		}
 	}
 
@@ -2563,9 +2689,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_compositeLit; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitCompositeLit(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterCompositeLit(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitCompositeLit(this);
 		}
 	}
 
@@ -2613,9 +2742,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_literalType; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitLiteralType(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterLiteralType(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitLiteralType(this);
 		}
 	}
 
@@ -2624,7 +2756,6 @@ public class GooParser extends Parser {
 		enterRule(_localctx, 94, RULE_literalType);
 		try {
 			setState(477);
-			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,33,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
@@ -2689,9 +2820,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_literalValue; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitLiteralValue(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterLiteralValue(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitLiteralValue(this);
 		}
 	}
 
@@ -2701,7 +2835,6 @@ public class GooParser extends Parser {
 		int _la;
 		try {
 			setState(488);
-			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,35,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
@@ -2759,9 +2892,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_elementList; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitElementList(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterElementList(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitElementList(this);
 		}
 	}
 
@@ -2816,9 +2952,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_element; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitElement(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterElement(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitElement(this);
 		}
 	}
 
@@ -2855,9 +2994,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_value; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitValue(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterValue(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitValue(this);
 		}
 	}
 
@@ -2936,9 +3078,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_primaryExpr; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitPrimaryExpr(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterPrimaryExpr(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitPrimaryExpr(this);
 		}
 	}
 
@@ -2958,7 +3103,6 @@ public class GooParser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(507);
-			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,38,_ctx) ) {
 			case 1:
 				{
@@ -2983,7 +3127,6 @@ public class GooParser extends Parser {
 					_prevctx = _localctx;
 					{
 					setState(517);
-					_errHandler.sync(this);
 					switch ( getInterpreter().adaptivePredict(_input,39,_ctx) ) {
 					case 1:
 						{
@@ -3052,9 +3195,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_selector; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitSelector(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterSelector(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitSelector(this);
 		}
 	}
 
@@ -3090,9 +3236,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_index; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitIndex(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterIndex(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitIndex(this);
 		}
 	}
 
@@ -3133,9 +3282,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_slice; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitSlice(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterSlice(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitSlice(this);
 		}
 	}
 
@@ -3145,7 +3297,6 @@ public class GooParser extends Parser {
 		int _la;
 		try {
 			setState(548);
-			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,44,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
@@ -3224,9 +3375,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_arguments; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitArguments(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterArguments(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitArguments(this);
 		}
 	}
 
@@ -3236,7 +3390,6 @@ public class GooParser extends Parser {
 		int _la;
 		try {
 			setState(559);
-			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,46,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
@@ -3300,9 +3453,12 @@ public class GooParser extends Parser {
 		}
 		public BoolExpContext(ExpressionContext ctx) { copyFrom(ctx); }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitBoolExp(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterBoolExp(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitBoolExp(this);
 		}
 	}
 	public static class UnExpContext extends ExpressionContext {
@@ -3311,9 +3467,12 @@ public class GooParser extends Parser {
 		}
 		public UnExpContext(ExpressionContext ctx) { copyFrom(ctx); }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitUnExp(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterUnExp(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitUnExp(this);
 		}
 	}
 	public static class NumExpContext extends ExpressionContext {
@@ -3331,9 +3490,12 @@ public class GooParser extends Parser {
 		}
 		public NumExpContext(ExpressionContext ctx) { copyFrom(ctx); }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitNumExp(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterNumExp(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitNumExp(this);
 		}
 	}
 	public static class RelExpContext extends ExpressionContext {
@@ -3348,9 +3510,12 @@ public class GooParser extends Parser {
 		}
 		public RelExpContext(ExpressionContext ctx) { copyFrom(ctx); }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitRelExp(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterRelExp(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitRelExp(this);
 		}
 	}
 
@@ -3387,7 +3552,6 @@ public class GooParser extends Parser {
 					_prevctx = _localctx;
 					{
 					setState(582);
-					_errHandler.sync(this);
 					switch ( getInterpreter().adaptivePredict(_input,47,_ctx) ) {
 					case 1:
 						{
@@ -3484,9 +3648,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_unaryExpr; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitUnaryExpr(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterUnaryExpr(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitUnaryExpr(this);
 		}
 	}
 
@@ -3495,7 +3662,6 @@ public class GooParser extends Parser {
 		enterRule(_localctx, 116, RULE_unaryExpr);
 		try {
 			setState(591);
-			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,49,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
@@ -3532,9 +3698,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_relOp; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitRelOp(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterRelOp(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitRelOp(this);
 		}
 	}
 
@@ -3571,9 +3740,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_addOp; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitAddOp(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterAddOp(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitAddOp(this);
 		}
 	}
 
@@ -3610,9 +3782,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_mulOp; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitMulOp(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterMulOp(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitMulOp(this);
 		}
 	}
 
@@ -3649,9 +3824,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_unaryOp; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitUnaryOp(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterUnaryOp(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitUnaryOp(this);
 		}
 	}
 
@@ -3694,9 +3872,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_conversion; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitConversion(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterConversion(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitConversion(this);
 		}
 	}
 
@@ -3773,9 +3954,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_statement; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitStatement(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterStatement(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitStatement(this);
 		}
 	}
 
@@ -3784,7 +3968,6 @@ public class GooParser extends Parser {
 		enterRule(_localctx, 128, RULE_statement);
 		try {
 			setState(619);
-			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,51,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
@@ -3890,9 +4073,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_simpleStmt; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitSimpleStmt(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterSimpleStmt(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitSimpleStmt(this);
 		}
 	}
 
@@ -3901,7 +4087,6 @@ public class GooParser extends Parser {
 		enterRule(_localctx, 130, RULE_simpleStmt);
 		try {
 			setState(626);
-			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,52,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
@@ -3957,9 +4142,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_emptyStmt; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitEmptyStmt(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterEmptyStmt(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitEmptyStmt(this);
 		}
 	}
 
@@ -3994,9 +4182,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_labeledStmt; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitLabeledStmt(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterLabeledStmt(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitLabeledStmt(this);
 		}
 	}
 
@@ -4032,9 +4223,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_label; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitLabel(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterLabel(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitLabel(this);
 		}
 	}
 
@@ -4068,9 +4262,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_expressionStmt; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitExpressionStmt(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterExpressionStmt(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitExpressionStmt(this);
 		}
 	}
 
@@ -4104,9 +4301,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_incDecStmt; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitIncDecStmt(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterIncDecStmt(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitIncDecStmt(this);
 		}
 	}
 
@@ -4115,7 +4315,6 @@ public class GooParser extends Parser {
 		enterRule(_localctx, 140, RULE_incDecStmt);
 		try {
 			setState(644);
-			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,53,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
@@ -4163,9 +4362,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_assignment; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitAssignment(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterAssignment(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitAssignment(this);
 		}
 	}
 
@@ -4206,9 +4408,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_assignOp; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitAssignOp(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterAssignOp(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitAssignOp(this);
 		}
 	}
 
@@ -4286,9 +4491,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_ifStmt; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitIfStmt(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterIfStmt(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitIfStmt(this);
 		}
 	}
 
@@ -4297,7 +4505,6 @@ public class GooParser extends Parser {
 		enterRule(_localctx, 146, RULE_ifStmt);
 		try {
 			setState(671);
-			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,55,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
@@ -4355,9 +4562,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_elsePart; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitElsePart(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterElsePart(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitElsePart(this);
 		}
 	}
 
@@ -4366,7 +4576,6 @@ public class GooParser extends Parser {
 		enterRule(_localctx, 148, RULE_elsePart);
 		try {
 			setState(678);
-			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,56,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
@@ -4420,9 +4629,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_forStmt; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitForStmt(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterForStmt(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitForStmt(this);
 		}
 	}
 
@@ -4431,7 +4643,6 @@ public class GooParser extends Parser {
 		enterRule(_localctx, 150, RULE_forStmt);
 		try {
 			setState(688);
-			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,57,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
@@ -4477,9 +4688,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_condition; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitCondition(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterCondition(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitCondition(this);
 		}
 	}
 
@@ -4519,9 +4733,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_forClause; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitForClause(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterForClause(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitForClause(this);
 		}
 	}
 
@@ -4571,9 +4788,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_initStmt; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitInitStmt(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterInitStmt(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitInitStmt(this);
 		}
 	}
 
@@ -4607,9 +4827,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_postStmt; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitPostStmt(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterPostStmt(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitPostStmt(this);
 		}
 	}
 
@@ -4644,9 +4867,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_returnStmt; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitReturnStmt(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterReturnStmt(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitReturnStmt(this);
 		}
 	}
 
@@ -4655,7 +4881,6 @@ public class GooParser extends Parser {
 		enterRule(_localctx, 160, RULE_returnStmt);
 		try {
 			setState(707);
-			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,59,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
@@ -4696,9 +4921,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_breakStmt; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitBreakStmt(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterBreakStmt(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitBreakStmt(this);
 		}
 	}
 
@@ -4707,7 +4935,6 @@ public class GooParser extends Parser {
 		enterRule(_localctx, 162, RULE_breakStmt);
 		try {
 			setState(712);
-			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,60,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
@@ -4748,9 +4975,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_continueStmt; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitContinueStmt(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterContinueStmt(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitContinueStmt(this);
 		}
 	}
 
@@ -4759,7 +4989,6 @@ public class GooParser extends Parser {
 		enterRule(_localctx, 164, RULE_continueStmt);
 		try {
 			setState(717);
-			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,61,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
@@ -4800,9 +5029,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_gotoStmt; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitGotoStmt(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterGotoStmt(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitGotoStmt(this);
 		}
 	}
 
@@ -4844,9 +5076,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_sourceFile; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitSourceFile(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterSourceFile(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitSourceFile(this);
 		}
 	}
 
@@ -4887,9 +5122,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_packageClause; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitPackageClause(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterPackageClause(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitPackageClause(this);
 		}
 	}
 
@@ -4923,9 +5161,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_packageName; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitPackageName(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterPackageName(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitPackageName(this);
 		}
 	}
 
@@ -4962,9 +5203,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_importDeclList; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitImportDeclList(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterImportDeclList(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitImportDeclList(this);
 		}
 	}
 
@@ -5017,9 +5261,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_importDecl; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitImportDecl(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterImportDecl(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitImportDecl(this);
 		}
 	}
 
@@ -5028,7 +5275,6 @@ public class GooParser extends Parser {
 		enterRule(_localctx, 176, RULE_importDecl);
 		try {
 			setState(747);
-			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,63,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
@@ -5080,9 +5326,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_importSpecList; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitImportSpecList(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterImportSpecList(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitImportSpecList(this);
 		}
 	}
 
@@ -5149,9 +5398,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_importSpec; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitImportSpec(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterImportSpec(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitImportSpec(this);
 		}
 	}
 
@@ -5183,9 +5435,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_importPath; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitImportPath(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterImportPath(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitImportPath(this);
 		}
 	}
 
@@ -5216,9 +5471,12 @@ public class GooParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_optSemi; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GooVisitor ) return ((GooVisitor<? extends T>)visitor).visitOptSemi(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).enterOptSemi(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GooListener ) ((GooListener)listener).exitOptSemi(this);
 		}
 	}
 
@@ -5227,7 +5485,6 @@ public class GooParser extends Parser {
 		enterRule(_localctx, 184, RULE_optSemi);
 		try {
 			setState(769);
-			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,66,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
