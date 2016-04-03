@@ -516,11 +516,38 @@ public class CGenVisitor extends GooBaseVisitor<LLVMValue> {
 		return visitChildren(ctx);
 	}
 
+  // TODO: ‘+’ and ‘-’ unary operators [10 points] (Added by Brett). Not sure if this is the correct spot or not.
 	@Override
 	public LLVMValue visitUnaryExpr(GooParser.UnaryExprContext ctx) {
-    // TODO: ‘+’ and ‘-’ unary operators [10 points] (Added by Brett). Not sure if this is the correct spot or not.
-		return visitChildren(ctx);
-	}
+    if (ctx.primaryExpr() != null) {
+      return visitPrimaryExpr(ctx.primaryExpr());
+    }
+    LLVMValue llval = visit(ctx.unaryExpr());
+    String typ = llval.getType();
+    if (ctx.unaryOp() != null) {
+      String op = ctx.unaryOp().getText();
+      switch (op) {
+        case "+":
+          return llval;
+
+        // output <- (-) input
+        case "-":
+          if (typ=="float" || typ=="double") {
+            LLVMValue neg = new LLVMValue(typ, "-1.0f", false);
+            return ll.writeFltInst("fmul", llval, neg);
+          } else {
+            LLVMValue neg = new LLVMValue(typ, "-1", false);
+            return ll.writeIntInst("mul", llval, neg);
+          }
+
+        default:
+          ReportError.error(ctx, "unrecognized unary op: " + op);
+          return null;
+      }
+    } else {
+      return llval;
+    }
+  }
 
 	// relOp:     '==' | '!=' | '<' | '<=' | '>' | '>=' ;
 	// addOp:     '+' | '-' | '|' | '^' ;
