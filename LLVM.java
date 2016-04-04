@@ -1,12 +1,12 @@
 /* LLVM.java
- * 
+ *
  * Utility code to help with outputting intermediate code in the
  * LLVM text format (as a '.ll' file).
- * 
+ *
  * Author: Nigel Horspool
  * Date: March 2016
  */
- 
+
 import java.util.*;
 import java.io.*;
 
@@ -22,7 +22,7 @@ public class LLVM {
     PrintStream ll1 = null;  // where all LLVM code is eventually written
     PrintStream ll2 = null;  // where code is temporarily written
     ByteArrayOutputStream ll2Base = null;
-    
+
     public int nextGlobalNum = 1;
     public Map<Symbol,LLVMValue> globalName = new HashMap<Symbol,LLVMValue>();
     public Map<String,LLVMValue> globalStringConsts = new HashMap<String,LLVMValue>();
@@ -49,7 +49,7 @@ public class LLVM {
                 ptrSize = 32;  ptrAlign = 4;
             } else
             if (targetTriple.startsWith("x86_64-")) {
-                // eg "x86_64-w64-windows-gnu"    // 64-bit Windows system   
+                // eg "x86_64-w64-windows-gnu"    // 64-bit Windows system
                 // or "x86_64-unknown-linux-gnu"  // 64-bit Linux system
                 ll1.println(LLVMPredefined.preamble64);
                 ptrSize = 64;  ptrAlign = 8;
@@ -110,7 +110,7 @@ public class LLVM {
         ll1 = null;
         ll2 = null;
     }
-    
+
     public String getTypeDescriptor(Type typ) {
         String result = typeDescriptorCache.get(typ);
         if (result == null) {
@@ -135,7 +135,7 @@ public class LLVM {
         if (typ instanceof Type.Int) return "i"+ ((Type.Int)typ).getSize();
         if (typ instanceof Type.Uint) return "i"+ ((Type.Int)typ).getSize();
         if (typ instanceof Type.UntypedNumber)
-        	return ((Type.UntypedNumber)typ).isPossibleDouble()? "double" : "i32"; 
+        	return ((Type.UntypedNumber)typ).isPossibleDouble()? "double" : "i32";
         if (typ instanceof Type.Flt)
             return ((Type.Flt)typ).getSize()==32? "float" : "double";
         if (typ instanceof Type.Pointer)
@@ -169,7 +169,7 @@ public class LLVM {
         if (typ != Type.unknownType)
             System.err.println("LLVM: call to createTypeDescriptor failed on type "+typ.toString());
         return "%errorType";
-        
+
     }
 
     public int getAlignment(Type typ) {
@@ -184,7 +184,7 @@ public class LLVM {
         if (typ instanceof Type.Int) return ((Type.Int)typ).getSize();
         if (typ instanceof Type.Uint) return ((Type.Int)typ).getSize();
         if (typ instanceof Type.UntypedNumber)
-        	return ((Type.UntypedNumber)typ).isPossibleDouble()? 8 : 4; 
+        	return ((Type.UntypedNumber)typ).isPossibleDouble()? 8 : 4;
         if (typ instanceof Type.Flt)
             return ((Type.Flt)typ).getSize()==32? 4 : 8;
         if (typ instanceof Type.Pointer)
@@ -297,6 +297,11 @@ public class LLVM {
 	            source, dest.getType(), dest.getValue(), align);
     }
 
+    //
+    public void moveValue(int val, LLVMValue dest) {
+      printf("  mov %s, %s\n", dest.getValue(), val);
+    }
+
     public void writeReturnInst(LLVMValue result) {
         if (result == null)
             printf("  ret void\n");
@@ -364,6 +369,25 @@ public class LLVM {
         printf("  %s = icmp %s %s, %s\n", rv, cmp, lhs, rhs.getValue());
         return new LLVMValue("i1", rv, false);
     }
+
+
+    public LLVMValue makeValue(String type, String val) {
+      String rv = nextTemporary();
+      printf("  %s = alloca %s, align %s\n", rv, type, getAlignment(type));
+      printf("  store %s %s, %s* \%%s", type, val, type, rv)
+      return new LLVMValue(type, rv, false);
+    }
+
+    // // Added this method. Was not provided.
+    // public LLVMValue makeNewBoolean(boolean isTrue) {
+    //   String rv = nextTemporary();
+    //   if (isTrue) {
+    //     printf("  %s = icmp %s %s, %s\n", rv, cmp, lhs, rhs.getValue());
+    //   } else {
+    //     printf("  %s = icmp %s %s, %s\n", rv, cmp, lhs, rhs.getValue());
+    //   }
+    //   return new LLVMValue("i1", rv, false);
+    // }
 
     // compare two float or double values
     public LLVMValue writeFCompInst(String cmp, LLVMValue lhs, LLVMValue rhs)

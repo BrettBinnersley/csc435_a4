@@ -516,7 +516,8 @@ public class CGenVisitor extends GooBaseVisitor<LLVMValue> {
 		return visitChildren(ctx);
 	}
 
-  // TODO: ‘+’ and ‘-’ unary operators [10 points] (Added by Brett). Not sure if this is the correct spot or not.
+  // TODO: ‘+’ and ‘-’ unary operators [10 points]
+  // TODO: '!' unary operator. [10 points]
 	@Override
 	public LLVMValue visitUnaryExpr(GooParser.UnaryExprContext ctx) {
     if (ctx.primaryExpr() != null) {
@@ -540,8 +541,32 @@ public class CGenVisitor extends GooBaseVisitor<LLVMValue> {
             return ll.writeIntInst("mul", llval, neg);
           }
 
+        case "!":
+          // Needs the PHI function
+          LLVMValue zeroVal = new LLVMValue(typ, "0", false);
+          LLVMValue oneVal = new LLVMValue(typ, "1", false);
+
+      		String ifNotZeroLab = ll.createBBLabel("n_then");
+      		String ifIsZero = ll.createBBLabel("n_else");
+      		String endNotSt  = ll.createBBLabel("n_endif");
+
+          LLVMValue cond = ll.writeCompInst("eq", zeroVal, llval);
+
+      		ll.writeCondBranch(cond, ifIsZero, ifNotZeroLab);
+
+      		ll.writeLabel(ifNotZeroLab);
+          retVal = ll.makeValue(llval.getType(), 0);
+          ll.writeBranch(endNotSt);
+
+      		ll.writeLabel(ifIsZero);
+      		retVal = ll.makeValue(llval.getType(), 1);
+      		ll.writeBranch(endNotSt);
+
+          ll.writeLabel(endNotSt);
+          return retVal;
+
         default:
-          ReportError.error(ctx, "unrecognized unary op: " + op);
+          ReportError.error(ctx, "Unsupported unary op: " + op);
           return null;
       }
     } else {

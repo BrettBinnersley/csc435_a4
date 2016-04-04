@@ -5,7 +5,11 @@ import (
 )
 
 func main() {
-    y := 1.2
-    y = -y
-  	fmt.Println("My favorite numbers are", y)
+    // y = true
+    y := 10
+    if(!(y == 10)) {
+      fmt.Println("My favorite numbers are", y)
+    } else {
+      fmt.Println("Surpise!", y)
+    }
 }
