@@ -514,24 +514,24 @@ public class CGenVisitor extends GooBaseVisitor<LLVMValue> {
 	@Override
 	public LLVMValue visitBoolExp(GooParser.BoolExpContext ctx) {
 	  String operator = ctx.getChild(1).getText();
-	  
+
 	  String parent = ll.createBBLabel("parent");
 	  String rhsBranch = ll.createBBLabel("rhs");
 	  String endBranch = ll.createBBLabel("end");
-	  
+
 	  ll.writeBranch(parent);
 	  ll.writeLabel(parent);
 	  LLVMValue LHS = visit(ctx.expression(0));
 	  ll.writeCondBranch(LHS, rhsBranch, endBranch);
-	  ll.writeLabel(rhsBranch);	  
+	  ll.writeLabel(rhsBranch);
     LLVMValue RHS = visit(ctx.expression(1));
     ll.writeBranch(endBranch);
     ll.writeLabel(endBranch);
     LLVMValue result = ll.writePhi(new Phi("i1").add("false", parent).add(RHS, rhsBranch));
 	  if(operator.equals("&&")){
-	    
+
 	  }else if(operator.equals("||")){
-	    
+
 	  }
 	  return ll.bitToBool(result);
 	}
@@ -563,27 +563,26 @@ public class CGenVisitor extends GooBaseVisitor<LLVMValue> {
 
         case "!":
           // Needs the PHI function
-          // LLVMValue zeroVal = new LLVMValue(typ, "0", false);
-          // LLVMValue oneVal = new LLVMValue(typ, "1", false);
-          //
-      		// String ifNotZeroLab = ll.createBBLabel("n_then");
-      		// String ifIsZero = ll.createBBLabel("n_else");
-      		// String endNotSt  = ll.createBBLabel("n_endif");
-          //
-          // LLVMValue cond = ll.writeCompInst("eq", zeroVal, llval);
-          //
-      		// ll.writeCondBranch(cond, ifIsZero, ifNotZeroLab);
-          //
-      		// ll.writeLabel(ifNotZeroLab);
-          // retVal = ll.makeValue(llval.getType(), 0);
-          // ll.writeBranch(endNotSt);
-          //
-      		// ll.writeLabel(ifIsZero);
-      		// retVal = ll.makeValue(llval.getType(), 1);
-      		// ll.writeBranch(endNotSt);
-          //
-          // ll.writeLabel(endNotSt);
-          return llval;
+          LLVMValue zeroVal = new LLVMValue(typ, "0", false);
+          LLVMValue oneVal = new LLVMValue(typ, "1", false);
+
+      		String ifNotZeroLab = ll.createBBLabel("n_then");
+      		String ifIsZero = ll.createBBLabel("n_else");
+      		String endNotSt  = ll.createBBLabel("n_endif");
+
+          LLVMValue cond = ll.writeCompInst("eq", zeroVal, llval);
+
+      		ll.writeCondBranch(cond, ifIsZero, ifNotZeroLab);
+
+      		ll.writeLabel(ifNotZeroLab);
+          ll.writeBranch(endNotSt);
+
+      		ll.writeLabel(ifIsZero);
+      		ll.writeBranch(endNotSt);
+
+          ll.writeLabel(endNotSt);
+          LLVMValue result = ll.writePhi(new Phi("i1").add("false", ifNotZeroLab).add("true", ifIsZero));
+          return result;
 
         default:
           ReportError.error(ctx, "Unsupported unary op: " + op);
@@ -673,7 +672,7 @@ public class CGenVisitor extends GooBaseVisitor<LLVMValue> {
 				ReportError.error(ctx, "unrecognized assignment operator: "+op);
 			    break;
 			}
-			ll.store(src, dest);
+      ll.store(src, dest);
 		}
 		return null;
 	}
