@@ -263,6 +263,14 @@ public class LLVM {
         	System.err.println("unhandled case for LLVM.forceIntValue: "+sv);
         return new LLVMValue("i32", rv, false);
     }
+    
+    public LLVMValue bitToBool(LLVMValue sv){
+      String rv = nextTemporary();
+      LLVMValue src = dereference(sv);
+      printf("  %s = zext i1 %s to i8\n", rv, src.getValue());
+      
+      return new LLVMValue("i8", rv, false);
+    }
 
 	// if src is a string constant in an LLVM temporary, then the string constant
 	// is created as a global constant in memory and a reference to the string
@@ -332,6 +340,12 @@ public class LLVM {
         assert(cond.getType() == "i1");
         printf("  br i1 %s, label %%%s, label %%%s\n",
             cond.getValue(), trueDest, falseDest);
+    }
+    
+    public LLVMValue writePhi(Phi phi){
+      String rv = nextTemporary();
+      printf("  %s = phi %s %s\n", rv, phi.type, phi);
+      return new LLVMValue(phi.type, rv, false);
     }
 
     // Outputs an LLVM instruction which has two int operands of same size

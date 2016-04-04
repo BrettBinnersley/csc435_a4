@@ -513,7 +513,27 @@ public class CGenVisitor extends GooBaseVisitor<LLVMValue> {
 
 	@Override
 	public LLVMValue visitBoolExp(GooParser.BoolExpContext ctx) {
-		return visitChildren(ctx);
+	  String operator = ctx.getChild(1).getText();
+	  
+	  String parent = ll.createBBLabel("parent");
+	  String rhsBranch = ll.createBBLabel("rhs");
+	  String endBranch = ll.createBBLabel("end");
+	  
+	  ll.writeBranch(parent);
+	  ll.writeLabel(parent);
+	  LLVMValue LHS = visit(ctx.expression(0));
+	  ll.writeCondBranch(LHS, rhsBranch, endBranch);
+	  ll.writeLabel(rhsBranch);	  
+    LLVMValue RHS = visit(ctx.expression(1));
+    ll.writeBranch(endBranch);
+    ll.writeLabel(endBranch);
+    LLVMValue result = ll.writePhi(new Phi("i1").add("false", parent).add(RHS, rhsBranch));
+	  if(operator.equals("&&")){
+	    
+	  }else if(operator.equals("||")){
+	    
+	  }
+	  return ll.bitToBool(result);
 	}
 
   // TODO: ‘+’ and ‘-’ unary operators [10 points]
