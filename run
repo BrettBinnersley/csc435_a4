@@ -3,8 +3,8 @@ javac -g -d bin *.java
 
 if [ "$#" -gt 0 ]
 then
-  java -cp bin GooMain "../test_files/$1.go"
-  lli-3.7  -force-interpreter "../test_files/$1.ll"
+  java -cp bin GooMain "test_files/$1.go"
+  lli-3.7  -force-interpreter "test_files/$1.ll"
 else
   java -cp bin GooMain "test_files/test_prog.go"
   lli-3.7  -force-interpreter "test_files/test_prog.ll"

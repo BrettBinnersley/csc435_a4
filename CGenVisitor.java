@@ -588,6 +588,15 @@ public class CGenVisitor extends GooBaseVisitor<LLVMValue> {
           LLVMValue result = ll.writePhi(new Phi("i1").add("false", ifNotZeroLab).add("true", ifIsZero));
           return result;
 
+        // Reference
+        case "&":
+          
+          break;
+
+        // Dereference
+        case "*":
+          break;
+
         default:
           ReportError.error(ctx, "Unsupported unary op: " + op);
           return null;

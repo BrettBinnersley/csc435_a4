@@ -307,11 +307,6 @@ public class LLVM {
 	            source, dest.getType(), dest.getValue(), align);
     }
 
-    //
-    public void moveValue(int val, LLVMValue dest) {
-      printf("  mov %s, %s\n", dest.getValue(), val);
-    }
-
     public void writeReturnInst(LLVMValue result) {
         if (result == null)
             printf("  ret void\n");
