@@ -522,17 +522,21 @@ public class CGenVisitor extends GooBaseVisitor<LLVMValue> {
 	  ll.writeBranch(parent);
 	  ll.writeLabel(parent);
 	  LLVMValue LHS = visit(ctx.expression(0));
-	  ll.writeCondBranch(LHS, rhsBranch, endBranch);
+	  if(operator.equals("&&")){
+	    ll.writeCondBranch(LHS, rhsBranch, endBranch);
+    }else{
+      ll.writeCondBranch(LHS, endBranch, rhsBranch);
+    }
 	  ll.writeLabel(rhsBranch);	  
     LLVMValue RHS = visit(ctx.expression(1));
     ll.writeBranch(endBranch);
     ll.writeLabel(endBranch);
-    LLVMValue result = ll.writePhi(new Phi("i1").add("false", parent).add(RHS, rhsBranch));
-	  if(operator.equals("&&")){
-	    
-	  }else if(operator.equals("||")){
-	    
-	  }
+    LLVMValue result;
+    if(operator.equals("&&")){
+      result = ll.writePhi(new Phi("i1").add("false", parent).add(RHS, rhsBranch));
+    }else{
+       result = ll.writePhi(new Phi("i1").add("true", parent).add(RHS, rhsBranch));
+    }
 	  return ll.bitToBool(result);
 	}
 
