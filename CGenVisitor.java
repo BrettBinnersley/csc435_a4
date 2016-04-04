@@ -687,7 +687,7 @@ public class CGenVisitor extends GooBaseVisitor<LLVMValue> {
   //
   @Override
 	public LLVMValue visitForStmt(GooParser.ForStmtContext ctx) {
-    if(ctx.condition() != null){
+    if(ctx.condition() != null) {
       String condLab = ll.createBBLabel("cond");
       String thenLab = ll.createBBLabel("then");
       String endLab  = ll.createBBLabel("endwhile");
@@ -699,8 +699,24 @@ public class CGenVisitor extends GooBaseVisitor<LLVMValue> {
       visit(ctx.block());
       ll.writeBranch(condLab);
       ll.writeLabel(endLab);
-    }else if(ctx.forClause() != null){
-      // TODO
+    } else if(ctx.forClause() != null) {  // TODO
+
+      String condLab = ll.createBBLabel("condfor");
+      String bodyLab = ll.createBBLabel("bodyfor");
+      String endLab  = ll.createBBLabel("endfor");
+      visit(ctx.forClause().initStmt());  // Init the variables
+      ll.writeBranch(condLab);  // Start the loop
+
+      ll.writeLabel(condLab);  // Loop condition block
+      LLVMValue cond = visit(ctx.forClause().condition());  // Update variable (check)
+      ll.writeCondBranch(cond, bodyLab, endLab);  // Check if we shoudl branch to body or end
+
+      ll.writeLabel(bodyLab);  // Body label
+      visit(ctx.block());
+      visit(ctx.forClause().postStmt());
+      ll.writeBranch(condLab);  // Go back to the check statemnet
+
+      ll.writeLabel(endLab);  // Continue on
     }
 		return null;
 	}

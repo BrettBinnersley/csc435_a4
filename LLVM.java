@@ -124,6 +124,8 @@ public class LLVM {
 	// Does not handle these Goo types:
 	//    TypeList  Slice   Function
     public String createTypeDescriptor(Type typ) {
+
+
     	// Cases which don't require an expensive instanceof test
         if (typ == Predefined.intType) return "i32";
         if (typ == Predefined.runeType) return "i8";
@@ -168,7 +170,7 @@ public class LLVM {
 
         if (typ != Type.unknownType)
             System.err.println("LLVM: call to createTypeDescriptor failed on type "+typ.toString());
-        return "%errorType";
+        return "%";
 
     }
 
