@@ -374,7 +374,7 @@ public class LLVM {
     public LLVMValue makeValue(String type, String val) {
       String rv = nextTemporary();
       printf("  %s = alloca %s, align %s\n", rv, type, getAlignment(type));
-      printf("  store %s %s, %s* \%%s", type, val, type, rv)
+      printf("  store %s %s, %s* /%%s", type, val, type, rv);
       return new LLVMValue(type, rv, false);
     }
 

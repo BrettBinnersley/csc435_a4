@@ -543,27 +543,27 @@ public class CGenVisitor extends GooBaseVisitor<LLVMValue> {
 
         case "!":
           // Needs the PHI function
-          LLVMValue zeroVal = new LLVMValue(typ, "0", false);
-          LLVMValue oneVal = new LLVMValue(typ, "1", false);
-
-      		String ifNotZeroLab = ll.createBBLabel("n_then");
-      		String ifIsZero = ll.createBBLabel("n_else");
-      		String endNotSt  = ll.createBBLabel("n_endif");
-
-          LLVMValue cond = ll.writeCompInst("eq", zeroVal, llval);
-
-      		ll.writeCondBranch(cond, ifIsZero, ifNotZeroLab);
-
-      		ll.writeLabel(ifNotZeroLab);
-          retVal = ll.makeValue(llval.getType(), 0);
-          ll.writeBranch(endNotSt);
-
-      		ll.writeLabel(ifIsZero);
-      		retVal = ll.makeValue(llval.getType(), 1);
-      		ll.writeBranch(endNotSt);
-
-          ll.writeLabel(endNotSt);
-          return retVal;
+          // LLVMValue zeroVal = new LLVMValue(typ, "0", false);
+          // LLVMValue oneVal = new LLVMValue(typ, "1", false);
+          //
+      		// String ifNotZeroLab = ll.createBBLabel("n_then");
+      		// String ifIsZero = ll.createBBLabel("n_else");
+      		// String endNotSt  = ll.createBBLabel("n_endif");
+          //
+          // LLVMValue cond = ll.writeCompInst("eq", zeroVal, llval);
+          //
+      		// ll.writeCondBranch(cond, ifIsZero, ifNotZeroLab);
+          //
+      		// ll.writeLabel(ifNotZeroLab);
+          // retVal = ll.makeValue(llval.getType(), 0);
+          // ll.writeBranch(endNotSt);
+          //
+      		// ll.writeLabel(ifIsZero);
+      		// retVal = ll.makeValue(llval.getType(), 1);
+      		// ll.writeBranch(endNotSt);
+          //
+          // ll.writeLabel(endNotSt);
+          return llval;
 
         default:
           ReportError.error(ctx, "Unsupported unary op: " + op);
