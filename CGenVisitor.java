@@ -691,6 +691,7 @@ public class CGenVisitor extends GooBaseVisitor<LLVMValue> {
       String condLab = ll.createBBLabel("cond");
       String thenLab = ll.createBBLabel("then");
       String endLab  = ll.createBBLabel("endwhile");
+      ll.writeBranch(condLab);
       ll.writeLabel(condLab);
       LLVMValue cond = visit(ctx.condition());
       ll.writeCondBranch(cond, thenLab, endLab);
