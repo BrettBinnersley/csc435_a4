@@ -533,7 +533,7 @@ public class CGenVisitor extends GooBaseVisitor<LLVMValue> {
         // output <- (-) input
         case "-":
           if (typ=="float" || typ=="double") {
-            LLVMValue neg = new LLVMValue(typ, "-1.0f", false);
+            LLVMValue neg = new LLVMValue(typ, "-1.0", false);
             return ll.writeFltInst("fmul", llval, neg);
           } else {
             LLVMValue neg = new LLVMValue(typ, "-1", false);

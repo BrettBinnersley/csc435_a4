@@ -5,8 +5,7 @@ import (
 )
 
 func main() {
-    var x float32
-    x = 1.2
-    x = -x
-  	fmt.Println("My favorite numbers are", x)
+    y := 1.2
+    y = -y
+  	fmt.Println("My favorite numbers are", y)
 }
