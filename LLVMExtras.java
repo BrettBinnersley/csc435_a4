@@ -64,9 +64,9 @@ public class LLVMExtras {
 		Type typ = sy.getType();
 		String name = ll.nextTemporary();
 		String gdesc = ll.createTypeDescriptor(typ);
-    ReportError.error(null, "FOOBARSS");
-    ReportError.error(null, typ.toString());
-    ReportError.error(null, gdesc);
+//    ReportError.error(null, "FOOBARSS");
+//    ReportError.error(null, typ.toString());
+//    ReportError.error(null, gdesc);
 
 		ll.printf("  %s = alloca %s, align %d ; %s\n",
 					name, gdesc, ll.ptrAlign, sy.getName());

@@ -442,8 +442,9 @@ public class CGenVisitor extends GooBaseVisitor<LLVMValue> {
 				packageName = pkgName;
 				return null;
 			}
-			// it's a field selection in a struct
-			assert false; // unimplemented
+			Type.Struct struct = (Type.Struct)pkg.getType();
+			String field = ctx.selector().getText().substring(1); // get rid of the "." in front of the name
+			return LLVMExtras.elementReference(ll, struct, visit(ctx.primaryExpr()), field);
 		}
 		if (ctx.index() != null) {
 		    // create reference to an array element
@@ -571,7 +572,6 @@ public class CGenVisitor extends GooBaseVisitor<LLVMValue> {
         case "!":
           // Needs the PHI function
           LLVMValue zeroVal = new LLVMValue(typ, "0", false);
-          LLVMValue oneVal = new LLVMValue(typ, "1", false);
 
       		String ifNotZeroLab = ll.createBBLabel("n_then");
       		String ifIsZero = ll.createBBLabel("n_else");
@@ -682,6 +682,7 @@ public class CGenVisitor extends GooBaseVisitor<LLVMValue> {
 				}
 				break;
 			case "=":
+			  // TODO
 				break;
 			default:
 				ReportError.error(ctx, "unrecognized assignment operator: "+op);
