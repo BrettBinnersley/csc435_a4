@@ -237,6 +237,14 @@ public class LLVM {
         return "%" + nextUnnamedIndex++;
     }
 
+    public LLVMValue getReference(LLVMValue src) {
+      String rv = nextTemporary();
+      // ReportError.error(null, "E: " + src.toString());
+      printf("  %s = alloca %s*, align %s\n", rv, src.getType(), getAlignment(src.getType()));
+      printf("  store %s* %s, %s** %s, align %s\n", src.getType(), src.getValue(), src.getType(), rv, getAlignment(src.getType()));
+      return new LLVMValue(src.getType(), rv, true);
+    }
+
     // Given a reference to memory, this generates a load to get the value
     // into a LLVM temporary
     public LLVMValue dereference(LLVMValue src)

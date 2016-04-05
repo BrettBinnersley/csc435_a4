@@ -1,13 +1,13 @@
 /* LLVMExtras.java
- * 
+ *
  * Methods which generate LLVM code for accessing
  * arrays, structs, ...
- * 
+ *
  * Author: Nigel Horspool
  * Date: March 2016
  */
- 
-        
+
+
 public class LLVMExtras {
 
 	// Write LLVM code to declare an initialized global variable or global constant
@@ -64,6 +64,10 @@ public class LLVMExtras {
 		Type typ = sy.getType();
 		String name = ll.nextTemporary();
 		String gdesc = ll.createTypeDescriptor(typ);
+    ReportError.error(null, "FOOBARSS");
+    ReportError.error(null, typ.toString());
+    ReportError.error(null, gdesc);
+
 		ll.printf("  %s = alloca %s, align %d ; %s\n",
 					name, gdesc, ll.ptrAlign, sy.getName());
 		return new LLVMValue(gdesc, name, true);

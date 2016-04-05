@@ -590,12 +590,11 @@ public class CGenVisitor extends GooBaseVisitor<LLVMValue> {
 
         // Reference
         case "&":
-          
-          break;
+          return ll.getReference(llval);
 
         // Dereference
         case "*":
-          break;
+          return ll.dereference(llval);
 
         default:
           ReportError.error(ctx, "Unsupported unary op: " + op);

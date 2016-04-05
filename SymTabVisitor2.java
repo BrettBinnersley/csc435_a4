@@ -3,7 +3,9 @@
 
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.*;
+
 import java.util.*;
+import java.util.function.BiFunction;
 
 public class SymTabVisitor2 extends GooBaseVisitor<Type> {
 	ParseTreeProperty<Scope> scopes;
@@ -14,7 +16,7 @@ public class SymTabVisitor2 extends GooBaseVisitor<Type> {
 	LinkedList<Type> currentSignatureResult = new LinkedList<Type>();
 	int arraySize = 0;
 	boolean dumpSymTab = false;
-	
+
 	// ************** constructors ******************
 
 	// constructor
@@ -72,12 +74,12 @@ public class SymTabVisitor2 extends GooBaseVisitor<Type> {
 		return typ;
 	}
 
-	public Type lookupType(ParserRuleContext ctx) {     // CHANGED FOR ASS4
-		assert ctx != null;
+	public Type lookupType(ParserRuleContext ctx) {
+    assert ctx != null;
 		Type typ = types.get(ctx);
-        if (typ != null) return typ;
-        if (ctx.getChildCount() == 1 && ctx.getChild(0) instanceof ParserRuleContext)
-        	return lookupType((ParserRuleContext)ctx.getChild(0));
+      if (typ != null) return typ;
+      if (ctx.getChildCount() == 1 && ctx.getChild(0) instanceof ParserRuleContext)
+      	return lookupType((ParserRuleContext)ctx.getChild(0));
         return null;
 	}
 
@@ -104,14 +106,14 @@ public class SymTabVisitor2 extends GooBaseVisitor<Type> {
     }
 
 	// *************** Visit methods *******************
-	
-	/* Note: 
-		Tthese visit methods are in exactly the same order as
+
+	/* Note:
+		  these visit methods are in exactly the same order as
 	   	the corresponding grammar rules in Goo.g4.
 	   	If a visitor method is not needed for a group of rules with
 	    the same LHS, a comment listing the rule(s) appears instead.
 	   	This helps ensure that no rule has been missed.
-	*/ 
+	*/
 
 	@Override
 	public Type visitType(GooParser.TypeContext ctx) {
@@ -136,7 +138,7 @@ public class SymTabVisitor2 extends GooBaseVisitor<Type> {
     @Override
 	public Type visitArrayType(GooParser.ArrayTypeContext ctx) {
 		Type typ = lookupType(ctx);
-		Type lengthType = visit(ctx.arrayLength());
+		visit(ctx.arrayLength());
 		Type et = visit(ctx.elementType());
 		if (typ == null)
 			typ = Type.newArrayType(et);
@@ -187,7 +189,7 @@ public class SymTabVisitor2 extends GooBaseVisitor<Type> {
 	}
 
 	// fieldDeclList:  /* empty */ |  (fieldDecl ';')* fieldDecl optSemi ;
-	
+
     @Override
 	public Type visitFieldDecl(GooParser.FieldDeclContext ctx) {
 		List<Token> ids = ctx.identifierList().idl;
@@ -213,7 +215,7 @@ public class SymTabVisitor2 extends GooBaseVisitor<Type> {
 	}
 
 	// baseType:   type ;
-	
+
     @Override
 	public Type visitSignature(GooParser.SignatureContext ctx) {
 		Type typ = lookupType(ctx);
@@ -268,7 +270,7 @@ public class SymTabVisitor2 extends GooBaseVisitor<Type> {
 		visit(ctx.statementList());
 		if (dumpSymTab)
 		    currentScope.dumpScope();
-		saveScope(ctx, currentScope);       // ADDED FOR ASS4
+    saveScope(ctx, currentScope);
 		currentScope = currentScope.getEnclosingScope();
 		return Type.voidType;
 	}
@@ -290,8 +292,12 @@ public class SymTabVisitor2 extends GooBaseVisitor<Type> {
 		List<Token> ids = ctx.identifierList().idl;
 		GooParser.ConstSpecRemContext csrx = ctx.constSpecRem();
 		Type typ = Type.unknownType;  // use this if type is missing
-		if (csrx != null)
+    if (csrx != null && csrx.type() != null) {
 			typ = visit(csrx.type());
+		} else {
+			typ = visit(ctx.constSpecRem());
+		}
+
 		return matchNamesToTypes(typ, ids, Symbol.Kind.Constant);
 	}
 
@@ -453,7 +459,7 @@ public class SymTabVisitor2 extends GooBaseVisitor<Type> {
 		if (pkg != null && pkg.getKind() == Symbol.Kind.Package) {
 			Symbol member = ((Packages.PackageSymbol)pkg).getMember(memberName);
 			if (member != null)
-				return associateType(ctx,member.getType()); 
+				return associateType(ctx,member.getType());
 			ReportError.error(ctx, pkgName + "." + memberName + " not found");
 		} else
 			ReportError.error(ctx, "package " + pkgName + " not found");
@@ -496,10 +502,13 @@ public class SymTabVisitor2 extends GooBaseVisitor<Type> {
 
 	@Override
 	public Type visitPrimaryExpr(GooParser.PrimaryExprContext ctx) {
-		if (ctx.operand() != null)
+    // ReportError.error(ctx, "asdfsfdsdf");
+    if (ctx.operand() != null)		    // ReportError.error(ctx, "asdfsfdsdf");
 			return associateType(ctx,visit(ctx.operand()));
+
 		if (ctx.conversion() != null)
 			return associateType(ctx,visit(ctx.conversion()));
+
 		Type typ = visit(ctx.primaryExpr());
 		if (ctx.selector() != null) {
 			// it parses as selecting a field from a struct or a
@@ -511,6 +520,7 @@ public class SymTabVisitor2 extends GooBaseVisitor<Type> {
 					return associateType(ctx,s.getType());
 				ReportError.error(ctx, "field "+fieldName+" not found");
 			} else if (typ instanceof Type.Pointer) {
+
 			    Type.Pointer ptyp = (Type.Pointer)typ;
 			    if (ptyp.getBaseType() instanceof Type.Struct) {
 			        Type.Struct styp = (Type.Struct)ptyp.getBaseType();
@@ -549,11 +559,12 @@ public class SymTabVisitor2 extends GooBaseVisitor<Type> {
 			visit(ctx.slice());
 			if (typ instanceof Type.Slice)
 				return associateType(ctx,typ);
-			// NOT HANDLED -- taking a slice of an array or a string or
+      // NOT HANDLED -- taking a slice of an array or a string or
 			// a pointer to an array; see
 			//   https://golang.org/ref/spec#Slice_expressions
 			if (typ != Type.unknownType)
 			    ReportError.error(ctx, "slice/array/string type required");
+			return associateType(ctx,lookupType(ctx.primaryExpr()));
 		}
 		if (ctx.arguments() != null) {
 			// it parses as a function call
@@ -573,6 +584,7 @@ public class SymTabVisitor2 extends GooBaseVisitor<Type> {
 			if (typ != Type.unknownType)
 			    ReportError.error(ctx, "arguments can be passed only to a function");
 		}
+
 		return Type.unknownType;
 	}
 
@@ -580,7 +592,7 @@ public class SymTabVisitor2 extends GooBaseVisitor<Type> {
 
 	@Override
 	public Type visitIndex(GooParser.IndexContext ctx) {
-	    Type ixtyp = visit(ctx.expression());
+	  Type ixtyp = visit(ctx.expression());
 		TypeChecking.checkAssignability(Predefined.intType, ixtyp, ctx);	// index must be an int
 		return associateType(ctx,ixtyp);
 	}
@@ -606,15 +618,95 @@ public class SymTabVisitor2 extends GooBaseVisitor<Type> {
 		return associateType(ctx,Type.newTypeList(list));
 	}
 
-	@Override
-	public Type visitUnExp(GooParser.UnExpContext ctx) {
-		return associateType(ctx, visit(ctx.unaryExpr()));
+	// expression:   unaryExpr # UnExp ;
+  @Override
+   public Type visitUnExp(GooParser.UnExpContext ctx) {
+     return associateType(ctx, visit(ctx.unaryExpr()));
+   }
+
+	public long Calculate(BiFunction<Long, Long, Long> op, long op1, long op2)
+	{
+	  return op.apply(op1, op2);
 	}
+	public double Calculate(BiFunction<Double, Long, Double> op, double op1, long op2)
+  {
+    return op.apply(op1, op2);
+  }
+	public double Calculate(BiFunction<Long, Double, Double> op, long op1, double op2)
+  {
+    return op.apply(op1, op2);
+  }
+	public double Calculate(BiFunction<Double, Double, Double> op, double op1, double op2)
+  {
+    return op.apply(op1, op2);
+  }
 
 	@Override
 	public Type visitNumExp(GooParser.NumExpContext ctx) {
 		Type lhs = visit(ctx.expression(0));
 		Type rhs = visit(ctx.expression(1));
+		if((lhs instanceof Type.UntypedNumber) && (rhs instanceof Type.UntypedNumber)){
+		  Type.UntypedNumber left = (Type.UntypedNumber)lhs;
+		  Type.UntypedNumber right = (Type.UntypedNumber)rhs;
+		  Number val = null;
+		  if(ctx.addOp() != null){
+		    switch(ctx.addOp().getText()){
+		    case "+":
+		      val = Calculate((x,y) -> x+y, left.isInteger() ? left.getIntValue() : left.getDoubleValue(), right.isInteger() ? right.getIntValue() : right.getDoubleValue());
+		      break;
+		    case "-":
+          val = Calculate((x,y) -> x-y, left.isInteger() ? left.getIntValue() : left.getDoubleValue(), right.isInteger() ? right.getIntValue() : right.getDoubleValue());
+          break;
+		    case "|":
+		      if(left.isInteger() && right.isInteger()){
+		        val = Calculate((Long x,Long y) -> x|y, left.getIntValue(), right.getIntValue());
+		      }
+		      break;
+		    case "^":
+		      if(left.isInteger() && right.isInteger()){
+            val = Calculate((Long x,Long y) -> x^y, left.getIntValue(), right.getIntValue());
+          }
+		      break;
+		    }
+		  }
+		  if(ctx.mulOp() != null){
+		    switch(ctx.mulOp().getText()){
+		    case "*":
+		      val = Calculate((x,y) -> x*y, left.isInteger() ? left.getIntValue() : left.getDoubleValue(), right.isInteger() ? right.getIntValue() : right.getDoubleValue());
+          break;
+        case "/":
+          val = Calculate((x,y) -> x/y, left.isInteger() ? left.getIntValue() : left.getDoubleValue(), right.isInteger() ? right.getIntValue() : right.getDoubleValue());
+          break;
+        case "%":
+          val = Calculate((x,y) -> x%y, left.isInteger() ? left.getIntValue() : left.getDoubleValue(), right.isInteger() ? right.getIntValue() : right.getDoubleValue());
+          break;
+        case "<<":
+          if(left.isInteger() && right.isInteger() && right.getIntValue() >= 0){
+            val = Calculate((Long x,Long y) -> x<<y, left.getIntValue(), right.getIntValue());
+          }
+          break;
+        case ">>":
+          if(left.isInteger() && right.isInteger() && right.getIntValue() >= 0){
+            val = Calculate((Long x,Long y) -> x>>y, left.getIntValue(), right.getIntValue());
+          }
+          break;
+        case "&":
+          if(left.isInteger() && right.isInteger()){
+            val = Calculate((Long x,Long y) -> x&y, left.getIntValue(), right.getIntValue());
+          }
+          break;
+        case "&^":
+          if(left.isInteger() && right.isInteger()){
+            val = Calculate((Long x,Long y) -> x&(~y), left.getIntValue(), right.getIntValue());
+          }
+          break;
+		    }
+		  }
+		  if(val != null){
+		    Type untyped = Type.newUntypedNumber(val.toString());
+		    return associateType(ctx, untyped);
+		  }
+		}
 		if (ctx.mulOp() != null)
 			return associateType(ctx,TypeChecking.checkBinOp(lhs, rhs, ctx.mulOp().getText(), ctx));
 		return associateType(ctx,TypeChecking.checkBinOp(lhs, rhs, ctx.addOp().getText(), ctx));
@@ -626,7 +718,7 @@ public class SymTabVisitor2 extends GooBaseVisitor<Type> {
 		Type rhs = visit(ctx.expression(1));
 		return associateType(ctx,TypeChecking.checkBinOp(lhs, rhs, ctx.relOp().getText(), ctx));
 	}
-	
+
 	@Override
 	public Type visitBoolExp(GooParser.BoolExpContext ctx) {
 		Type lhs = visit(ctx.expression(0));
@@ -640,10 +732,35 @@ public class SymTabVisitor2 extends GooBaseVisitor<Type> {
 	public Type visitUnaryExpr(GooParser.UnaryExprContext ctx) {
 		if (ctx.unaryOp() != null) {
 			Type opnd = visit(ctx.unaryExpr());
-			return associateType(ctx,TypeChecking.checkUnaryOp(opnd, ctx.unaryOp().getText(), ctx));
+			if(opnd instanceof Type.UntypedNumber){
+			  Type newType = null;
+			  switch(ctx.unaryOp().getText()){
+			  case "-":
+			    newType = Type.newUntypedNumber("-"+ctx.unaryExpr().getText());
+			    break;
+			  case "^":
+			    Type.UntypedNumber num = (Type.UntypedNumber)opnd;
+			    if(num.isInteger()){
+			      newType = Type.newUntypedNumber(Long.toString(~num.getIntValue()));
+			    }
+			    break;
+			  }
+			  if(newType != null){
+			    return associateType(ctx, newType);
+			  }
+			}
+
+      Symbol t = null;
+      if (ctx.unaryExpr() != null) {
+        t = currentScope.resolve(ctx.unaryExpr().getText());
+      } else {
+        t = null;
+      }
+			return associateType(ctx,TypeChecking.checkUnaryOp(opnd, ctx.unaryOp().getText(), ctx, t)); //ctx.unaryExpr().getText());
 		}
 		return associateType(ctx,visit(ctx.primaryExpr()));
 	}
+  // currentScope.resolve(opnd.getName())
 
 	// relOp:     '==' | '!=' | '<' | '<=' | '>' | '>=' ;
 	// addOp:     '+' | '-' | '|' | '^' ;
@@ -698,7 +815,14 @@ public class SymTabVisitor2 extends GooBaseVisitor<Type> {
 	@Override
 	public Type visitIncDecStmt(GooParser.IncDecStmtContext ctx) {
 		Type opnd = visit(ctx.expression());
-		return TypeChecking.checkUnaryOp(opnd, "++", ctx);	// check for being an L-value left for pass 3
+
+    Symbol t;
+    if (ctx.expression() != null) {
+      t = currentScope.resolve(ctx.expression().getText());
+    } else {
+      t = null;
+    }
+		return TypeChecking.checkUnaryOp(opnd, "++", ctx, t);	// check for being an L-value left for pass 3
 	}
 
 	@Override
@@ -785,7 +909,7 @@ public class SymTabVisitor2 extends GooBaseVisitor<Type> {
 	}
 
 	// packageClause:   PACKAGE packageName ;
-	
+
 	// packageName:   Identifier ;
 
 	// importDeclList:   (importDecl ';')*  ;
@@ -820,7 +944,7 @@ public class SymTabVisitor2 extends GooBaseVisitor<Type> {
 				if (typeList != null)
 					theType = typeList[k++];
 				else
-					theType = typ;				
+					theType = typ;
 				updateOrDefine(tt, kind, theType);
 		    }
 		}
@@ -828,7 +952,7 @@ public class SymTabVisitor2 extends GooBaseVisitor<Type> {
 	}
 
 	// scans up enclosing scopes to find current function
-	// CRASHES IF CALLED WHEN CURRENT SCOPE IS PACKAGE LEVEL !! 
+	// CRASHES IF CALLED WHEN CURRENT SCOPE IS PACKAGE LEVEL !!
 	private FunctionSymbol currentFunction() {
 		Scope scope = currentScope;
 		while( !(scope instanceof FunctionSymbol) )
