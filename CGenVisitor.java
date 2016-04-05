@@ -412,6 +412,9 @@ public class CGenVisitor extends GooBaseVisitor<LLVMValue> {
         	    Type toType = funcSym.getType();
         	    return LLVMExtras.typeConversion(ll, toType, argVals.get(0));
 			}
+			if(funcSym == null && funcName.equals("new")){
+			  // TODO
+			}
 			Symbol sym;
 			if (funcName.indexOf('.')>0) {
 				// it's a package member ... have to use member symbol
