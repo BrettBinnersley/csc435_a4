@@ -14,6 +14,7 @@
 
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.*;
+
 import java.util.*;
 
 public class CGenVisitor extends GooBaseVisitor<LLVMValue> {
@@ -682,13 +683,12 @@ public class CGenVisitor extends GooBaseVisitor<LLVMValue> {
 				}
 				break;
 			case "=":
-			  // TODO
 				break;
 			default:
 				ReportError.error(ctx, "unrecognized assignment operator: "+op);
 			    break;
 			}
-      ll.store(src, dest);
+		  ll.store(src, dest);
 		}
 		return null;
 	}

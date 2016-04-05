@@ -3,13 +3,14 @@ package main
 import "fmt"
 
 type person struct {
-    name string
+    name int
     age  int
 }
 
 func main() {
 	var p person
-    p.name = "Sean"
+    p.name = 20
     p.age = 50
     fmt.Println(p.name)
+    fmt.Println(p.age)
 }

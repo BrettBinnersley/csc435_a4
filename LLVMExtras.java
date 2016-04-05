@@ -118,11 +118,10 @@ public class LLVMExtras {
 		}
 		assert(fldType != null);
 		String ftyp = ll.createTypeDescriptor(fldType);
-		String styp = ll.createTypeDescriptor(strType);
 		String rv1 = ll.nextTemporary();
-		ll.printf("  %s = getelementptr inbounds (%s, %s* %s, i32 0, i32 %d\n",
-			rv1, styp, styp, strPtr.getValue(), fnum);
-		return new LLVMValue(ftyp + "*", rv1, true);
+		ll.printf("  %s = getelementptr inbounds %s, %s* %s, i32 0, i32 %d\n",
+			rv1, strPtr.getType(), strPtr.getType(), strPtr.getValue(), fnum);
+		return new LLVMValue(ftyp, rv1, true);
 	}
 
 	// returns 1 for i1, 8 for i8, 32 for i32, 64 for i64 and 0 for everything else

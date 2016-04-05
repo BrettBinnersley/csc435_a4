@@ -8,6 +8,8 @@
  */
 
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.io.*;
 
 public class LLVM {
@@ -148,7 +150,12 @@ public class LLVM {
             sb.append(nextStructNumber++);
             String name = sb.toString();
             sb.append(" = type { ");
+            boolean first = true;
             for( Symbol sy : ((Type.Struct)typ).getFields().values() ) {
+                if(first == false){
+                  sb.append(",");
+                }
+                first = false;
                 String st = getTypeDescriptor(sy.getType());
                 sb.append(st);
                 sb.append(' ');
@@ -304,17 +311,27 @@ public class LLVM {
         	return;
         }
         source = dereference(source);
-        String srcType = source.getType();
+        String srcString;
+        if(source.getType().startsWith("[")){
+          // can not write array types directly.
+          Pattern pattern = Pattern.compile("\\[\\d+ x (.+)?\\]");
+          Matcher matcher = pattern.matcher(source.getType());
+          matcher.find();
+          String baseType = matcher.group(1);
+          srcString = String.format("%s* getelementptr inbounds (%s, %s* %s, i32 0, i32 %d)", baseType, source.getType(), source.getType(), source.getValue(), 0);
+        }else{
+          srcString = source.toString();
+        }
         String destType = dest.getType();
         int align = getAlignment(destType);
         if (dest.isReference())
 	        printf("  store %s, %s* %s, align %d\n",
-	            source, dest.getType(), dest.getValue(), align);
+	            srcString, dest.getType(), dest.getValue(), align);
         else
 	        printf("  store %s, %s %s, align %d\n",
-	            source, dest.getType(), dest.getValue(), align);
+	            srcString, dest.getType(), dest.getValue(), align);
     }
-
+   
     public void writeReturnInst(LLVMValue result) {
         if (result == null)
             printf("  ret void\n");
